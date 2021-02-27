@@ -1,0 +1,21 @@
+// Define variable defaults
+// $body-bg: #000;
+// $body-color: #111;
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
+
+// @import "./scss/custom-vars.scss";
+
+
+// @import 'node_modules/bootstrap/scss/bootstrap.scss';
+// @import 'node_modules/bootstrap-vue/src/index.scss';
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
+
+
+// @each $color, $value in $theme-colors {
+//       $lightened: lighten($color: $value, $amount: 7%);
+//       background-color: $lightened;
+//       color: color-yiq($lightened);
+//   }
