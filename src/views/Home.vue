@@ -10,15 +10,19 @@
         <card :user="user" />
       </b-col>
     </b-row>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      first-text="First"
-      prev-text="Prev"
-      next-text="Next"
-      last-text="Last"
-    ></b-pagination>
+    <b-row>
+      <b-col offset-md="4">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          first-text="First"
+          prev-text="Prev"
+          next-text="Next"
+          last-text="Last"
+        ></b-pagination>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
