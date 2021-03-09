@@ -2,12 +2,11 @@
   <div id="app">
     <div id="nav">
       <top-header />
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/full-service">Full Service</router-link> |
-      <router-link to="/on-demand">On Demand</router-link>
     </div>
-    <router-view />
+
+    <transition name="slide">
+      <router-view />
+    </transition>
   </div>
 </template>
 
