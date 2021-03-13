@@ -7,7 +7,7 @@
         v-for="(user, index) in users"
         v-bind:key="index"
       >
-        <card :user="user" />
+        <card-test :user="user" />
       </b-col>
     </b-row>
     <b-row>
@@ -28,7 +28,7 @@
 
 <script>
 // @ is an alias to /src
-import Card from "@/components/Card.vue";
+import CardTest from "@/components/CardTest.vue";
 
 export default {
   name: "Home",
@@ -41,7 +41,7 @@ export default {
     };
   },
   components: {
-    card: Card
+    "card-test": CardTest
   },
   methods: {
     fetchData: async function() {

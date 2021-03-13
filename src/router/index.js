@@ -10,11 +10,25 @@ import FullServiceDashboard from "../views/full_service/views/FullServiceDashboa
 import OnDemandCampaigns from "../views/on_demand/views/OnDemandCampaigns.vue";
 import OnDemandDashboard from "../views/on_demand/views/OnDemandDashboard.vue";
 
+import Billing from "../views/billing/Billing.vue";
+
+import AppHeader from "../layout/AppHeader";
+import AppFooter from "../layout/AppFooter";
+
+import DashboardLayout from "../layout/DashboardLayout.vue";
+import LandingLayout from "../layout/LandingLayout.vue";
+
+import Components from "../views/Components.vue";
+import Landing from "../views/Landing.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+import Profile from "../views/Profile.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home
   },
@@ -56,13 +70,71 @@ const routes = [
     path: "/on-demand/dashboard",
     name: "OnDemandDashboard",
     component: OnDemandDashboard
+  },
+
+  {
+    path: "/billing",
+    name: "billing",
+    components: {
+      default: Billing
+    },
+    meta: { layout: DashboardLayout }
+  },
+
+  {
+    path: "/components",
+    name: "components",
+    components: {
+      default: Components,
+      footer: AppFooter
+    }
+  },
+  {
+    path: "/",
+    name: "landing",
+    components: {
+      default: Landing
+    },
+    meta: { layout: LandingLayout }
+  },
+  {
+    path: "/login",
+    name: "login",
+    components: {
+      default: Login
+    },
+    meta: { layout: LandingLayout }
+  },
+  {
+    path: "/register",
+    name: "register",
+    components: {
+      default: Register
+    },
+    meta: { layout: LandingLayout }
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    components: {
+      default: Profile
+    },
+    meta: { layout: LandingLayout }
   }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  linkExactActiveClass: "active",
+  routes,
+  scrollBehavior: to => {
+    if (to.hash) {
+      return { selector: to.hash };
+    } else {
+      return { x: 0, y: 0 };
+    }
+  }
 });
 
 export default router;

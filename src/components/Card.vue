@@ -1,59 +1,70 @@
 <template>
-  <div>
-    <b-card
-      :title="user.name"
-      img-src="https://picsum.photos/600/300/?image=25"
-      img-alt="Job Info"
-      img-top
-      img-tag="article"
-      style="max-width:20rem"
-      footer="Foter"
-    >
-      <b-card-text>
-        <b-card>
-          Email: {{ user.email }} <br />
-          <b> {{ count }}</b>
-        </b-card>
-      </b-card-text>
-      <b-button class="mb-3" variant="primary" @click="increment(10)"
-        ><b>Increment</b>
-      </b-button>
+  <div
+    class="card"
+    :class="[
+      { 'card-lift--hover': hover },
+      { shadow: shadow },
+      { [`shadow-${shadowSize}`]: shadowSize },
+      { [`bg-gradient-${gradient}`]: gradient },
+      { [`bg-${type}`]: type }
+    ]"
+  >
+    <div class="card-header" :class="headerClasses" v-if="$slots.header">
+      <slot name="header"> </slot>
+    </div>
+    <div class="card-body" :class="bodyClasses" v-if="!noBody">
+      <slot></slot>
+    </div>
 
-      <b-form-rating
-        v-model="rating_value"
-        variant="warning"
-        class="mb-2"
-      ></b-form-rating>
-    </b-card>
+    <slot v-if="noBody"></slot>
+
+    <div class="card-footer" :class="footerClasses" v-if="$slots.footer">
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
-
 <script>
-import { mapState, mapGetters } from "vuex";
-
 export default {
+  name: "card",
   props: {
-    user: Object
-  },
-  data() {
-    return {
-      rating_value: 1
-    };
-  },
-  computed: {
-    ...mapState({
-      count: state => state.count
-    }),
-    ...mapGetters({})
-  },
-  methods: {
-    increment: function(value) {
-      this.$store.commit("increment", {
-        amount: value
-      });
+    type: {
+      type: String,
+      description: "Card type"
+    },
+    gradient: {
+      type: String,
+      description: "Card background gradient type (warning,danger etc)"
+    },
+    hover: {
+      type: Boolean,
+      description: "Whether card should move on hover"
+    },
+    shadow: {
+      type: Boolean,
+      description: "Whether card has shadow"
+    },
+    shadowSize: {
+      type: String,
+      description: "Card shadow size"
+    },
+    noBody: {
+      type: Boolean,
+      default: false,
+      description: "Whether card should have wrapper body class"
+    },
+    bodyClasses: {
+      type: [String, Object, Array],
+      description: "Card body css classes"
+    },
+    headerClasses: {
+      type: [String, Object, Array],
+      description: "Card header css classes"
+    },
+    footerClasses: {
+      type: [String, Object, Array],
+      description: "Card footer css classes"
     }
   }
 };
 </script>
-
-<style lang="scss" scoped></style>
+<style></style>

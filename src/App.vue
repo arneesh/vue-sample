@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <top-header />
-    </div>
-
-    <transition name="slide">
-      <router-view />
-    </transition>
+    <router-view name="header"></router-view>
+    <main>
+      <component :is="this.$route.meta.layout || 'div'">
+        <transition name="slide">
+          <router-view />
+        </transition>
+      </component>
+    </main>
+    <router-view name="footer"></router-view>
   </div>
 </template>
 
@@ -14,6 +16,9 @@
 import TopHeader from "@/components/TopHeader.vue";
 
 export default {
+  data() {
+    return {};
+  },
   components: {
     "top-header": TopHeader
   }
@@ -27,6 +32,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#app {
+  min-height: 100vh;
 }
 
 #nav {
