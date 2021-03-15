@@ -10,7 +10,7 @@ import FullServiceDashboard from "../views/full_service/views/FullServiceDashboa
 import OnDemandCampaigns from "../views/on_demand/views/OnDemandCampaigns.vue";
 import OnDemandDashboard from "../views/on_demand/views/OnDemandDashboard.vue";
 
-import Billing from "../views/billing/Billing.vue";
+import BillingHome from "../views/billing/BillingHome.vue";
 
 import AppHeader from "../layout/AppHeader";
 import AppFooter from "../layout/AppFooter";
@@ -76,7 +76,7 @@ const routes = [
     path: "/billing",
     name: "billing",
     components: {
-      default: Billing
+      default: BillingHome
     },
     meta: { layout: DashboardLayout }
   },
