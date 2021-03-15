@@ -11,6 +11,8 @@ import OnDemandCampaigns from "../views/on_demand/views/OnDemandCampaigns.vue";
 import OnDemandDashboard from "../views/on_demand/views/OnDemandDashboard.vue";
 
 import BillingHome from "../views/billing/BillingHome.vue";
+import NewPaymentMethod from "../views/billing/views/payment/NewPaymentMethod.vue";
+import Payments from "../views/billing/views/payment/Payments.vue";
 
 import AppHeader from "../layout/AppHeader";
 import AppFooter from "../layout/AppFooter";
@@ -78,7 +80,21 @@ const routes = [
     components: {
       default: BillingHome
     },
-    meta: { layout: DashboardLayout }
+    meta: { layout: DashboardLayout },
+    children: [
+      {
+        path: "",
+        component: Payments,
+        name: "Payments",
+        meta: { layout: DashboardLayout },
+      },
+      {
+      path: "payment-method/new",
+      component: NewPaymentMethod,
+      name: "NewPaymentMethod",
+      meta: { layout: DashboardLayout },
+    },
+  ]
   },
 
   {

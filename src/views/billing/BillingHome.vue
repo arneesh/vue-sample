@@ -4,7 +4,6 @@
 
   <b-breadcrumb>
         <b-breadcrumb-item v-for="(route,index) in $route.matched" v-bind:key="index" :route=route>Foo</b-breadcrumb-item>
-
   </b-breadcrumb>
 
 
@@ -31,6 +30,7 @@
         </card>
       </tabs>
     </div>
+
   </section>
 </template>
 
