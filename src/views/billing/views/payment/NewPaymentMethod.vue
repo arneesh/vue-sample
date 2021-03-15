@@ -50,6 +50,15 @@
         </b-card>
       </b-col>
     </b-row>
+    <b-row class="mt-5">
+      <b-col class="md-12">
+        <base-button type="primary">
+          <router-link class="text-white" :to="{ name: 'SelectedPaymentMethod'}">Set Up Payment</router-link>
+
+          <i class="fa fa-arrow-right"></i>
+        </base-button>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

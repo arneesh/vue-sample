@@ -19,6 +19,12 @@
                 View
                 <i class="fa fa-arrow-right"></i>
               </base-button>
+
+                <base-button  type="danger">
+                    <i class="fa fa-trash"></i>
+                Remove
+              </base-button>
+
             </b-col>
           </b-row>
         </div>
@@ -46,7 +52,7 @@
       </p>
 
       <base-button class="btn-3" type="primary">
-       Set Up Payment Method
+          <router-link class="text-white" :to="{ name: 'SelectedPaymentMethod'}">Set Up Payment Method</router-link>
         <i class="fa fa-arrow-right"></i>
       </base-button>
     </template>

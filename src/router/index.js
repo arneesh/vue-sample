@@ -12,6 +12,7 @@ import OnDemandDashboard from "../views/on_demand/views/OnDemandDashboard.vue";
 
 import BillingHome from "../views/billing/BillingHome.vue";
 import NewPaymentMethod from "../views/billing/views/payment/NewPaymentMethod.vue";
+import SelectedPaymentMethod from "../views/billing/views/payment/SelectedPaymentMethod.vue";
 import Payments from "../views/billing/views/payment/Payments.vue";
 
 import AppHeader from "../layout/AppHeader";
@@ -92,6 +93,12 @@ const routes = [
       path: "payment-method/new",
       component: NewPaymentMethod,
       name: "NewPaymentMethod",
+      meta: { layout: DashboardLayout },
+    },
+      {
+      path: "select-payment-method",
+      component: SelectedPaymentMethod,
+      name: "SelectedPaymentMethod",
       meta: { layout: DashboardLayout },
     },
   ]
