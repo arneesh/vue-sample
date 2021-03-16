@@ -43,9 +43,9 @@
                     href=""
                     class="mb-3 mb-sm-0"
                     type="white"
-                    icon="ni ni-cloud-download-95"
+                    icon="fa fa-code"
                   >
-                    <router-link to="billing">Billing</router-link>
+                    <router-link to="containers">Containers</router-link>
                   </base-button>
                 </div>
               </div>

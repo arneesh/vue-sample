@@ -9,7 +9,7 @@
                   <small class="font-weight-bold">Email on which email is sent.</small>
                   <b-row class="mt-3">
                     <b-col md="8">
-                      <base-input alternative placeholder="Regular"></base-input>
+                      <base-input alternative placeholder="arneesh@scribeless.co"></base-input>
                     </b-col>
                     <b-col md="4">
                       <base-button type="primary">Update</base-button>
@@ -26,13 +26,15 @@
             <div>
               <b-row align-v="center">
                 <b-col md="12" class="text-left">
-                  <small class="font-weight-bold">Email on which email is sent.</small>
+                  <small class="font-weight-bold">Pay using this card</small><br/>
+                  <small class="font-weight-bold">Vendor: </small>
+                  <small class="font-weight-bold text-primary">Visa</small>
                   <b-row class="mt-3">
                     <b-col md="8">
-                      <base-input alternative placeholder="Regular"></base-input>
+                      <base-input alternative placeholder="**** **** **** 4242"></base-input>
                     </b-col>
                     <b-col md="4">
-                      <base-button type="primary">Update</base-button>
+                      <base-button type="primary">Pay Now</base-button>
                     </b-col>
                   </b-row>
                 </b-col>

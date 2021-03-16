@@ -4,9 +4,9 @@
       <div class="row row-grid align-items-center my-md">
         <div class="col-lg-6">
           <h3 class="text-primary font-weight-light mb-2">
-            Arneesh Aima Creations
+            -
           </h3>
-          <h4 class="mb-0 font-weight-light">Visit me on these platforms.</h4>
+          <h5 class="mb-0 font-weight-light">Visit me on these platforms.</h5>
         </div>
         <div class="col-lg-6 text-lg-center btn-wrapper">
           <a

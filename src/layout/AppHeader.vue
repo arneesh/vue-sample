@@ -13,9 +13,6 @@
             ><span class="text-white">Home</span></router-link
           ></span
         >
-        <router-link to="components"
-          ><span class="text-white">Components</span></router-link
-        >
 
         <base-dropdown tag="li" class="nav-item">
           <a

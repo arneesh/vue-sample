@@ -14,12 +14,16 @@
             </b-col>
             <b-col class="md-6 text-right">
               <b-link
-                :to="{ name: 'CampaignDetails', params: { 'campaignId': campaign_id } }"
+                :to="{ name: 'CampaignDetails', params: { 'campaignId': '' } }"
                 class="btn btn-primary"
               >
                 View
                 <i class="fa fa-arrow-right"></i>
               </b-link>
+              <base-button v-if="allowRemove" type="danger">
+                <i class="fa fa-trash"></i>
+                Remove
+              </base-button>
             </b-col>
           </b-row>
         </div>
@@ -27,7 +31,7 @@
       <b-row class="mt-5">
         <b-col class="md-12">
           <b-link
-            :to="{ name: 'CampaignDetails', params: { 'campaignId': campaign_id } }"
+            :to="{ name: 'CampaignDetails', params: { 'campaignId': '' } }"
             class="btn btn-primary"
           >
             Add a New Payment Method
@@ -48,7 +52,7 @@
       </p>
 
       <b-link
-        :to="{ name: 'CampaignDetails', params: { 'campaignId': campaign_id } }"
+        :to="{ name: 'CampaignDetails', params: { 'campaignId': '' } }"
         class="btn btn-primary"
       >
         Set Up Payment Method Now
@@ -80,6 +84,11 @@ export default {
         }
       ]
     };
+  },
+  props: {
+      allowRemove: {
+          required: false
+      }
   }
 };
 </script>

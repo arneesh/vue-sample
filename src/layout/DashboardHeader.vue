@@ -13,10 +13,24 @@
           </close-button>
         </div>
       </div>
-      <div>
+        <div>
         <h3 class="heading mb-0">
+          <router-link class="text-white" to="/"
+            ><strong>Landing</strong></router-link
+          >
+        </h3>
+      </div>
+      <div>
+        <h3 class="heading mb-0 ml-3">
           <router-link class="text-white" to="/components"
             ><strong>Components</strong></router-link
+          >
+        </h3>
+      </div>
+      <div>
+        <h3 class="heading mb-0 ml-3">
+          <router-link class="text-white" to="/containers"
+            ><strong>Containers</strong></router-link
           >
         </h3>
       </div>

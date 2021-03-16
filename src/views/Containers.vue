@@ -11,10 +11,25 @@
         <span></span>
       </div>
     </section>
+      <b-row>
+      <b-col md="12" >
+        <div class="col-lg-6 btn-wrapper">
+          <router-link to="/">
+            <a
+              target="_blank"
+              rel="noopener"
+              class="btn btn-neutral btn-icon-only btn-round btn-lg"
+              data-toggle="tooltip"
+            >
+              <i class="fa fa-arrow-left"></i>
+            </a>
+          </router-link>
+        </div>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col md="12">
                       <h2 class="display-3 text-success">Billing/Payment Containers</h2>
-
         <b-container >
           <b-card>
             <h2 class="display-4 text-left">Billing Type</h2>
@@ -23,8 +38,11 @@
             <h2 class="display-4 mt-5 text-left ">Payment Methods</h2>
             <payment-methods />
 
-            <h2 class="display-4 mt-5 text-left">Saved Payment Methods</h2>
+            <h2 class="display-4 mt-5 text-left">Saved Payment Methods : Default</h2>
             <saved-payment-methods />
+
+            <h2 class="display-4 mt-5 text-left">Saved Payment Methods :  Allow Remove</h2>
+            <saved-payment-methods allowRemove=true />
 
             <h2 class="display-4 mt-5 text-left">Selected Payment Method : pay_by_invoice</h2>
             <selected-payment-method paymentMethod="pay_by_invoice" />
