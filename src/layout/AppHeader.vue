@@ -36,7 +36,7 @@
           <router-link to="/billing"
             ><span class="dropdown-item">Billing</span></router-link
           >
-          <router-link to="/"
+          <router-link to="/campaign"
             ><span class="dropdown-item">Campaign</span></router-link
           >
         </base-dropdown>

@@ -15,6 +15,11 @@ import NewPaymentMethod from "../views/billing/views/payment/NewPaymentMethod.vu
 import SelectedPaymentMethod from "../views/billing/views/payment/SelectedPaymentMethod.vue";
 import Payments from "../views/billing/views/payment/Payments.vue";
 
+import CampaignHome from "../views/campaign/CampaignHome.vue";
+import CreateCampaign from "../views/campaign/views/CreateCampaign.vue";
+import CampaignDetails from "../views/campaign/views/CampaignDetails.vue";
+
+
 import AppHeader from "../layout/AppHeader";
 import AppFooter from "../layout/AppFooter";
 
@@ -22,6 +27,7 @@ import DashboardLayout from "../layout/DashboardLayout.vue";
 import LandingLayout from "../layout/LandingLayout.vue";
 
 import Components from "../views/Components.vue";
+import Containers from "../views/Containers.vue";
 import Landing from "../views/Landing.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
@@ -105,10 +111,49 @@ const routes = [
   },
 
   {
+    path: "/campaign",
+    component: CampaignHome,
+    meta: { layout: DashboardLayout },
+    children: [
+      {
+        path: "",
+        component: CreateCampaign,
+        name: "campaign",
+        meta: { layout: DashboardLayout },
+        props: true
+      },
+      {
+        path: "create",
+        component: CreateCampaign,
+        name: "CreateCampaign",
+        meta: { layout: DashboardLayout },
+        props: true
+
+      },
+      {
+        path: ":campaignId",
+        component: CampaignDetails,
+        name: "CampaignDetails",
+        meta: { layout: DashboardLayout },
+        props: true
+      },
+
+    ]
+  },
+
+  {
     path: "/components",
     name: "components",
     components: {
       default: Components,
+      footer: AppFooter
+    }
+  },
+  {
+    path: "/containers",
+    name: "containers",
+    components: {
+      default: Containers,
       footer: AppFooter
     }
   },
@@ -152,11 +197,7 @@ const router = new VueRouter({
   linkExactActiveClass: "active",
   routes,
   scrollBehavior: to => {
-    if (to.hash) {
-      return { selector: to.hash };
-    } else {
-      return { x: 0, y: 0 };
-    }
+    return { x: 0, y: 0 };
   }
 });
 
