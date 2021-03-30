@@ -152,43 +152,43 @@ export default {
 
 
     // Disable One Off Billing
-    if(user.sender == 'Print Now' && user.data_source == 'audience') {
+    if(this.user.sender == 'Print Now' && this.user.data_source == 'audience') {
       this.disabled_section = 'one_off_billing';
     }
 
-    if(user.sender == 'Print Now' && user.data_source == 'api_crm') {
+    if(this.user.sender == 'Print Now' && this.user.data_source == 'api_crm') {
       this.disabled_section = 'one_off_billing';
     }
 
-    if(user.sender == 'Print on Request' && user.data_source == 'audience') {
+    if(this.user.sender == 'Print on Request' && this.user.data_source == 'audience') {
       this.disabled_section = 'one_off_billing';
     }
 
-    if(user.sender == 'Print on Request' && user.data_source == 'api_crm') {
+    if(this.user.sender == 'Print on Request' && this.user.data_source == 'api_crm') {
       this.disabled_section = 'one_off_billing';
     }
 
-    if(user.sender == 'Ship for Me' && user.data_source == 'api_crm') {
+    if(this.user.sender == 'Ship for Me' && this.user.data_source == 'api_crm') {
       this.disabled_section = 'one_off_billing';
     }
 
     // Diable None
 
-    if(user.sender == 'Ship for me' && user.data_source=='audience') {
+    if(this.user.sender == 'Ship for me' && this.user.data_source=='audience') {
       this.disabled_section == '';
     }
 
-    if(user.sender == 'Ship to me' && user.data_source=='audience') {
+    if(this.user.sender == 'Ship to me' && this.user.data_source=='audience') {
       this.disabled_section == '';
     }
 
   // Disable Subscription Billing
 
-  if(user.sender == 'Ship to me'  && user.data_source== 'audience' && user.envelope_required=='No Envelope') {
+  if(this.user.sender == 'Ship to me'  && this.user.data_source== 'audience' && this.user.envelope_required=='No Envelope') {
     this.disabled_section = 'subscription_billing';
   }
 
-  if(user.sender == 'Ship to me'  && user.data_source== 'audience' && user.products_enabled.includes('printed_envelopes_only')) {
+  if(this.user.sender == 'Ship to me'  && this.user.data_source== 'audience' && this.user.products_enabled.includes('printed_envelopes_only')) {
     this.disabled_section = 'subscription_billing';
   }
     
