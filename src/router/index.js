@@ -18,7 +18,11 @@ import Payments from "../views/billing/views/payment/Payments.vue";
 import CampaignHome from "../views/campaign/CampaignHome.vue";
 import CreateCampaign from "../views/campaign/views/CreateCampaign.vue";
 import CampaignDetails from "../views/campaign/views/CampaignDetails.vue";
-
+import CampaignBilling from '../views/campaign/views/CampaignBilling.vue';
+import CampaignSavedPaymentMethods from '../views/campaign/views/billing/CampaignSavedPaymentMethods.vue';
+import AddNewCard from '../views/campaign/views/billing/AddNewCard.vue';
+import PayByCard from '../views/campaign/views/billing/PayByCard.vue';
+import PayByInvoice from '../views/campaign/views/billing/PayByInvoice.vue';
 
 import AppHeader from "../layout/AppHeader";
 import AppFooter from "../layout/AppFooter";
@@ -134,6 +138,41 @@ const routes = [
         path: ":campaignId",
         component: CampaignDetails,
         name: "CampaignDetails",
+        meta: { layout: DashboardLayout },
+        props: true
+      },
+      {
+        path: ":campaignId/billing",
+        component: CampaignBilling,
+        name: "CampaignBilling",
+        meta: { layout: DashboardLayout },
+        props: true
+      },
+      {
+        path: ":campaignId/billing/savedPaymentMethods/:stripeCustomerId",
+        component: CampaignSavedPaymentMethods,
+        name: "CampaignSavedPaymentMethods",
+        meta: { layout: DashboardLayout },
+        props: true
+      },
+      {
+        path: ":campaignId/billing/addNewCard/:stripeCustomerId",
+        component: AddNewCard,
+        name: "AddNewCard",
+        meta: { layout: DashboardLayout },
+        props: true
+      },
+      {
+        path: ":campaignId/billing/payByCard/:stripeCustomerId",
+        component: PayByCard,
+        name: "PayByCard",
+        meta: { layout: DashboardLayout },
+        props: true
+      },
+      {
+        path: ":campaignId/billing/payByInvoice/:stripeCustomerId",
+        component: PayByInvoice,
+        name: "PayByInvoice",
         meta: { layout: DashboardLayout },
         props: true
       },

@@ -2,7 +2,7 @@
   <div>
       <b-row class="mt-3">
         <b-col class="md-12">
-          <b-card v-if="paymentMethod == 'pay_by_invoice'">
+          <b-card  v-if="paymentMethod == 'pay_by_invoice'">
             <div>
               <b-row align-v="center">
                 <b-col md="12" class="text-left">

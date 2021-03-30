@@ -19,51 +19,38 @@
     </b-row>
 
     <b-row class="mt-3">
-      <b-col class="md-6">
-        <b-card>
-          <div>
-            <b-row align-v="center">
-              <b-col md="10" class="text-left">
-                <h3 class="h5 text-primary font-weight-bold">Subscription Using Card</h3>
-                <small>Add a card to your accout for payments.</small>
-              </b-col>
-              <b-col md="2" class="text-right">
-                <i class="fa fa-arrow-right"></i>
-              </b-col>
-            </b-row>
-          </div>
-        </b-card>
-      </b-col>
-      <b-col class="md-6">
-        <b-card border-variant="primary">
-          <div>
-            <b-row align-v="center">
-              <b-col md="10" class="text-left">
-                <h3 class="h5 text-primary font-weight-bold">Monthly Recurring Invoice</h3>
-                <small>Set Up monthly Invoice which will be sent to you.</small>
-              </b-col>
-              <b-col md="2" class="text-right">
-                <i class="fa fa-arrow-right"></i>
-              </b-col>
-            </b-row>
-          </div>
-        </b-card>
+      <b-col class="md-12">
+    <payment-methods /> 
+
       </b-col>
     </b-row>
     <b-row class="mt-5">
       <b-col class="md-12">
-        <base-button type="primary">
-          <router-link class="text-white" :to="{ name: 'SelectedPaymentMethod', params: { paymentMethodSelected: 'pay_by_card' }}">Set Up Payment</router-link>
-
+         <b-link
+          :to="{ name: 'SelectedPaymentMethod', params: {  paymentMethodSelected: 'pay_by_card' } }"
+          class="btn btn-primary"
+        >
+          Set Up Payment
           <i class="fa fa-arrow-right"></i>
-        </base-button>
+        </b-link>
       </b-col>
     </b-row>
   </div>
 </template>
 
 <script>
-export default {};
+import PaymentMethods from '../../../containers/billing/PaymentMethods.vue';
+
+export default {
+
+
+
+  components: {
+        "payment-methods": PaymentMethods,
+
+  }
+
+};
 </script>
 
 <style lang="scss" scoped>
