@@ -7,6 +7,7 @@
     </b-row>
     <b-row class="mt-5">
         <b-col md="12">
+            
             <stripe-checkout-test />
         </b-col>
     </b-row>

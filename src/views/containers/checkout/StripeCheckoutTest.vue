@@ -9,7 +9,7 @@
       :cancel-url="cancelURL"
       @loading="v => loading = v"
     />
-    <b-button variant="primary" @click="submit">Pay - (Server Integrated)</b-button>
+    <b-button variant="primary" @click="submit">Checkout</b-button>
   </div>
 </template>
 
@@ -39,17 +39,45 @@ export default {
 
       let that = this.$refs;
 
-       let product_creation_response = await fetch('http://localhost:3000/create-product-pricing', {
+      //  let product_creation_response = await fetch('http://localhost:3000/create-product-pricing', {
+      //     method: 'POST',
+      //     headers: {
+      //               'Content-Type': 'application/json'
+      //           },
+      //           body: JSON.stringify({
+      //               campaign_id: 'campaign_id_57',
+      //               campaign_name: 'name_of_campaign1',
+      //               price: 44 * 100,
+      //               currency: 'usd',
+      //               images: ['https://uploads-ssl.webflow.com/5e99ba0b8f2dc750e9b345d0/5ef4d21ddef12514bd88f799_notemockup.png']
+      //           })
+      //   });
+
+
+      // Save the product id that is ebing returned from here - also remove he create product
+      // option from here and instead create an admin api endpoint for something like this
+
+      //  let product_creation_response = await fetch('http://localhost:3000/create-product', {
+      //     method: 'POST',
+      //     headers: {
+      //               'Content-Type': 'application/json'
+      //           },
+      //           body: JSON.stringify({
+      //               product_name: 'Full Service A4',
+      //               images: ['https://uploads-ssl.webflow.com/5e99ba0b8f2dc750e9b345d0/5ef4d21ddef12514bd88f799_notemockup.png']
+      //           })
+      //   });
+
+       let product_creation_response = await fetch('http://localhost:3000/create-pricing', {
           method: 'POST',
           headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    campaign_id: 'campaign_id_55',
-                    campaign_name: 'name_of_campaign1',
-                    price: 44 * 100,
+                    price: 54 * 100,
                     currency: 'usd',
-                    images: ['https://uploads-ssl.webflow.com/5e99ba0b8f2dc750e9b345d0/5ef4d21ddef12514bd88f799_notemockup.png']
+                    product_id: 'prod_JDPzaNCXpjXGum',
+                    product_name: 'Full Service A4'
                 })
         });
 

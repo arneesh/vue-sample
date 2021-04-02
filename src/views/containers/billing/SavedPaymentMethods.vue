@@ -15,17 +15,19 @@
               <b-col class="md-6 text-left">
                 <h3
                   class="h5 text-primary font-weight-bold"
-                >**** **** **** {{ payment_method.last4}}</h3>
+                >**** **** **** {{ payment_method.card.last4}}</h3>
                 <small>Vendor:</small>
-                <badge type="primary" class="text-uppercase">{{ payment_method.brand}}</badge>
+                <badge type="primary" class="text-uppercase">{{ payment_method.card.brand}}</badge>
                 <br />
 
                 <small>
                   Type:
-                  <span class="text-primary">{{ payment_method.object}}</span>
+                  <span class="text-primary">{{ payment_method.type}}</span>
                 </small>
+
               </b-col>
               <b-col class="md-6 text-right">
+                                <h6 class="text-primary heading" v-if=" payment_method && customerData && (payment_method.id == customerData.invoice_settings.default_payment_method)"><strong>DEfault</strong></h6>
                 <b-link
                   :to="{ name: 'PayByCard', params: { 'campaignId': campaignId, 'stripeCustomerId': stripeCustomerId } }"
                   class="btn btn-primary"
@@ -101,17 +103,25 @@ export default {
     payment_methods: function() {
       return this.$store.getters.getSavedPaymentMethodsList;
     },
+    customerData: function() {
+      return this.$store.getters.getCustomerData;
+    },
     loading: function() {
       return this.$store.getters.getLoadingState ;
     }
   },
   methods: {
-    ...mapActions(["getSavedPaymentMethods"])
+    ...mapActions(["getSavedPaymentMethods", "getStripeCustomer"])
   },
   mounted() {
     this.$store.dispatch("getSavedPaymentMethods", {
       campaignId: this.campaignId,
-      stripeCustomerId: this.stripeCustomerId
+      stripeCustomerId: this.stripeCustomerId,
+      paymentMethodType: 'card'
+    });
+
+    this.$store.dispatch("getStripeCustomer", {
+      stripeCustomerId: this.stripeCustomerId,
     });
   }
 };

@@ -3,7 +3,7 @@ export default {
 
         context.commit('getLoadingState', true);
 
-        fetch(`http://localhost:3000/card-list/${ data.stripeCustomerId }`, {
+        fetch(`http://localhost:3000/payment-methods-list/${ data.stripeCustomerId}/${data.paymentMethodType}`, {
             method: 'GET',
             headers: {
                         'Content-Type': 'application/json'
@@ -22,6 +22,30 @@ export default {
         });
 
     },
+
+    getStripeCustomer: (context, data) => {
+
+        fetch(`http://localhost:3000/customer/${ data.stripeCustomerId }`, {
+            method: 'GET',
+            headers: {
+                        'Content-Type': 'application/json'
+                    }
+            }).then((response) => response.json()).then((data) => {
+
+            let customerData = data.customer;
+
+            if(data.status =="success"){
+                context.commit('getStripeCustomer', customerData);
+            }
+
+        }).catch((err) => {
+            console.log('err :>> ', err);
+        });
+
+
+    },
+
+
     selectBillingType: (context, value) => {
         context.commit('selectBillingType', value);
     },

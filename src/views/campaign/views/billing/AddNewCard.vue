@@ -8,6 +8,7 @@
     <b-row class="mt-5" align="center">
       <b-col md="12">
         <card
+          ref="stripe_card_ele"
           class="stripe-card"
           :class="{ complete }"
           :stripe="stripe"
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import { Card, createToken } from "vue-stripe-elements-plus";
+import { Card, createToken, instance } from "vue-stripe-elements-plus";
 
 export default {
   components: {
@@ -32,6 +33,14 @@ export default {
 
   data: function() {
     return {
+      user_profile: {
+        full_name: 'Arneesh Aima',
+        email: 'arneesh@scrobeless.co',
+        phone: 9876543210
+      },
+      tax_id: '',
+      tax_type: 'eu_vat',
+
       complete: false,
       stripeOptions: {
         hidePostalCode: false
@@ -61,8 +70,10 @@ export default {
       createToken().then(data => console.log(data.token));
     },
     addCard: async function() {
-                
-                let response = await fetch(`http://localhost:3000/add-card/${ this.customer_id }`, {
+
+
+                      
+                let setup_intent_response = await fetch(`http://localhost:3000/setup-intent/${ this.customer_id }`, {
                 method: 'POST',
                 headers: {
                             'Content-Type': 'application/json'
@@ -72,11 +83,63 @@ export default {
                     })
                 });
 
+                let setup_intent_response_data = await setup_intent_response.json();
+
+                  let options = {
+                      'payment_method': {
+                        'card': this.$refs.stripe_card_ele.$refs.element._element,
+                        'billing_details': {
+                          'phone': this.user_profile.phone,
+                          'name': this.user_profile.full_name,
+                          'email': this.user_profile.email
+                        }
+                      }
+                    }
+
+
+                    console.log("Options", options);
+
+
+                let confirm_card_payment_response = await instance.confirmCardSetup(setup_intent_response_data.client_secret, options )
+
+            console.log('confirm_card_payment_response :>> ', confirm_card_payment_response);
+
+
+                if(confirm_card_payment_response.errror) {
+                  console.log('error :>> ');
+                }
+
+                if(confirm_card_payment_response.setupIntent.status == 'suceeded') {
+                  console.log('successful :>> ') 
+                  }
+
+
+                  let payment_method_id = confirm_card_payment_response.setupIntent.payment_method;
+                
+                let response = await fetch(`http://localhost:3000/add-card/${ this.customer_id }`, {
+                method: 'POST',
+                headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    body: JSON.stringify({
+                        payment_method_id: payment_method_id,
+                        tax_id: this.tax_id,
+                        tax_type: this.tax_type
+                    })
+                });
+
                 let data = await response.json();
+
+
+
+                console.log('add card response :>> ', data);
 
                 if(data.status =="success") {
                   this.$router.push({name: 'CampaignSavedPaymentMethods', params: { 'campaignId': this.campaignId, 'stripeCustomerId': this.stripeCustomerId } });
                 }
+
+
+
             },
   },
   watch: {

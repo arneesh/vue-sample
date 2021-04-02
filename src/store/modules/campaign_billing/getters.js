@@ -2,6 +2,9 @@ export default {
     getSavedPaymentMethodsList: state => {
         return state.savedPaymentMethodsList;
     },
+    getCustomerData: state => {
+        return state.customerData;
+    },
     getLoadingState: state => {
         return state.loading;
     },

@@ -2,6 +2,9 @@ export default {
     getSavedPaymentMethods: (state, payload) => {
         state.savedPaymentMethodsList = payload;
     },
+    getStripeCustomer: (state, payload) => {
+        state.customerData = payload;
+    },
     getLoadingState: (state, payload) => {
         state.loading = payload;
     },
