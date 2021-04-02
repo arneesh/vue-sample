@@ -41,8 +41,6 @@ export default {
         }).catch((err) => {
             console.log('err :>> ', err);
         });
-
-
     },
 
 
@@ -51,6 +49,9 @@ export default {
     },
     selectPaymentType: (context, value) => {
         context.commit('selectPaymentType', value);
+    },
+    selectCard: (context, value) => {
+        context.commit('selectCard', value);
     }
 
 }

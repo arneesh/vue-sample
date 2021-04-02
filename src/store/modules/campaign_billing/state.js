@@ -3,5 +3,6 @@ export default {
     customerData: {},
     loading: false,
     billingType: '',
-    paymentType: ''
+    paymentType: '',
+    selectedCard: ''
 }

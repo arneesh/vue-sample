@@ -13,5 +13,8 @@ export default {
     },
     getPaymentType: state => {
         return state.paymentType;
+    },
+    getSelectedCard: state => {
+        return state.selectedCard;
     }
 }

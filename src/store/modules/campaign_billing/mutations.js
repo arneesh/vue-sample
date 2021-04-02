@@ -13,5 +13,8 @@ export default {
     },
     selectPaymentType: (state, payload) => {
         state.paymentType = payload;
+    },
+    selectCard: (state, payload) => {
+        state.selectedCard = payload;
     }
 }

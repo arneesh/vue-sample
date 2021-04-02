@@ -23,7 +23,7 @@ export default {
       required: true
     },
     stripeCustomerId: {
-      tpe: String,
+      type: String,
       required: true
     }
   },
